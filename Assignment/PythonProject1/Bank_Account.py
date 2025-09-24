@@ -1,5 +1,5 @@
 class Account:
-    def __init__(self, name, balance, number = 8104676967):
+    def __init__(self, name, balance, number=8104676967):
         self.name = name
         self.balance = balance
         self.number = number
@@ -9,11 +9,13 @@ class Account:
 
     def get_balance(self):
         return self.balance
+
     def set_balance(self, amount):
         if amount < 499:
-            raise Exception('Insufficient balance')
+            raise Exception('Balance must be at least 499')
         elif amount < self.balance:
-            raise Exception('Insufficient balance')
+            raise Exception('New balance cannot be less than current balance')
+        self.balance = amount
 
     def get_number(self):
         return self.number
@@ -24,11 +26,8 @@ class Account:
         else:
             raise Exception('Deposit must be positive')
 
-        def withdraw(self, amount):
-            if 0 <= amount <= self.balance :
-                self.balance -= amount
-            else:
-                raise Exception('Insufficient balance')
-
-
-
+    def withdraw(self, amount):
+        if 0 <= amount <= self.balance:
+            self.balance -= amount
+        else:
+            raise Exception('Insufficient balance')
